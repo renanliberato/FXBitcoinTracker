@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="com.squareup.retrofit2:converter-gson:2.1.0" type="repository">
+    <properties maven-id="com.squareup.retrofit2:converter-gson:2.1.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/retrofit2/converter-gson/2.1.0/converter-gson-2.1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/retrofit2/retrofit/2.1.0/retrofit-2.1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okhttp3/okhttp/3.3.0/okhttp-3.3.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okio/okio/1.8.0/okio-1.8.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.7/gson-2.7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/retrofit2/converter-gson/2.1.0/converter-gson-2.1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/retrofit2/converter-gson/2.1.0/converter-gson-2.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
