@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/coinbaseAPI.iml" filepath="$PROJECT_DIR$/coinbaseAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FXBitcoinTracker.iml" filepath="$PROJECT_DIR$/FXBitcoinTracker.iml" />
     </modules>
   </component>
 </project>
