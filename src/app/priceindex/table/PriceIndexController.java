@@ -1,4 +1,4 @@
-package app.priceindex;
+package app.priceindex.table;
 
 import app.priceindex.model.PriceIndex;
 import app.priceindex.model.PriceIndex;
@@ -37,7 +37,7 @@ public class PriceIndexController implements Initializable {
 
         indexTable.setItems(indexList);
 
-        dateColumn.setCellValueFactory(new PropertyValueFactory<PriceIndex, Integer>("date"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<PriceIndex, String>("date"));
         indexColumn.setCellValueFactory(new PropertyValueFactory<PriceIndex, Double>("index"));
 
     }

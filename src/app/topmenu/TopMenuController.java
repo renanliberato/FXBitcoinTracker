@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,7 +20,10 @@ import java.util.ResourceBundle;
 public class TopMenuController implements Initializable {
 
     @FXML
-    private Button toHomeButton, toPriceIndexButton;
+    private Button toHomeButton;
+
+    @FXML
+    private MenuItem toPriceIndexTable, toPriceIndexChart;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -31,9 +35,18 @@ public class TopMenuController implements Initializable {
                 e.printStackTrace();
             }
         });
-        toPriceIndexButton.setOnAction((ActionEvent event) -> {
+        toPriceIndexTable.setOnAction((ActionEvent event) -> {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("../../resources/priceindex/priceindex.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("../../resources/priceindex/table/priceindex.fxml"));
+                Home.getStage().setScene(new Scene(root, 600, 400));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        toPriceIndexChart.setOnAction((ActionEvent event) -> {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("../../resources/priceindex/chart/priceindex.fxml"));
                 Home.getStage().setScene(new Scene(root, 600, 400));
             } catch (IOException e) {
                 e.printStackTrace();

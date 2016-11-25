@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<TextFlow textAlignment="CENTER" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1"><Text>Powered by CoinDesk</Text>
+   <padding>
+      <Insets top="10.0" bottom="10.0" />
+   </padding></TextFlow>

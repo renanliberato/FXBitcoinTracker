@@ -1,4 +1,4 @@
-package app.priceindex.table;
+package app.priceindex.chart;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +16,7 @@ public class PriceIndex extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.stage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("../../resources/priceindex/table/priceindex.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../resources/priceindex/chart/priceindex.fxml"));
         Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
         stage.show();

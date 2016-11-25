@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import app.priceindex.chart.DateAxis?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.priceindex.chart.PriceIndexController">
+    <top>
+        <fx:include source="../../topmenu/topmenu.fxml" />
+    </top>
+    <center>
+          <LineChart fx:id="indexChart">
+               <xAxis>
+                    <DateAxis fx:id="xAxis" />
+               </xAxis>
+               <yAxis>
+                    <NumberAxis fx:id="yAxis" />
+               </yAxis>
+          </LineChart>
+    </center>
+    <bottom>
+        <fx:include source="../../footer/footer.fxml" />
+    </bottom>
+</BorderPane>

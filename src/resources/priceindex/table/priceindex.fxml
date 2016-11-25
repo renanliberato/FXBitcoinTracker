@@ -4,16 +4,19 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.priceindex.PriceIndexController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.priceindex.table.PriceIndexController">
     <top>
-        <fx:include source="../topmenu/topmenu.fxml" />
+        <fx:include source="../../topmenu/topmenu.fxml" />
     </top>
-   <center>
-      <TableView fx:id="indexTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+    <center>
+        <TableView fx:id="indexTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="dateColumn" prefWidth="300.0" text="Date" />
-          <TableColumn fx:id="indexColumn" prefWidth="300.0" text="Index" />
+            <TableColumn fx:id="dateColumn" prefWidth="300.0" text="Date" />
+            <TableColumn fx:id="indexColumn" prefWidth="300.0" text="Index" />
         </columns>
-      </TableView>
+        </TableView>
    </center>
+    <bottom>
+        <fx:include source="../../footer/footer.fxml" />
+    </bottom>
 </BorderPane>
