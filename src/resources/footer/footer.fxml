@@ -4,7 +4,9 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow textAlignment="CENTER" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1"><Text>Powered by CoinDesk</Text>
+<?import javafx.scene.control.Hyperlink?>
+<TextFlow textAlignment="CENTER" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.footer.FooterController">
+   <Hyperlink fx:id="hyperlink">Powered by CoinDesk</Hyperlink>
    <padding>
       <Insets top="10.0" bottom="10.0" />
    </padding></TextFlow>
