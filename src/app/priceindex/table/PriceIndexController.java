@@ -3,6 +3,7 @@ package app.priceindex.table;
 import app.priceindex.model.PriceIndex;
 import app.priceindex.model.PriceIndex;
 import app.priceindex.model.PriceIndexDAO;
+import app.priceindex.search.SearchController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,13 +28,10 @@ import java.util.ResourceBundle;
 public class PriceIndexController implements Initializable {
 
     @FXML
+    private SearchController searchController;
+
+    @FXML
     private TableView indexTable;
-
-    @FXML
-    private DatePicker fromField, toField;
-
-    @FXML
-    private Button searchButton;
 
     @FXML
     private TableColumn dateColumn, indexColumn;
@@ -46,13 +44,8 @@ public class PriceIndexController implements Initializable {
         dateColumn.setCellValueFactory(new PropertyValueFactory<PriceIndex, String>("date"));
         indexColumn.setCellValueFactory(new PropertyValueFactory<PriceIndex, Double>("index"));
 
-        searchButton.setOnAction((ActionEvent event) -> {
-            LocalDate from = fromField.getValue();
-            LocalDate to   = toField.getValue();
-
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            PriceIndexDAO dao = new PriceIndexDAO();
-            this.indexList = FXCollections.observableArrayList(dao.fetchAll(from.format(formatter), to.format(formatter)));
+        searchController.getSearchButton().setOnAction((ActionEvent event) -> {
+            this.indexList = searchController.search();
 
             indexTable.setItems(indexList);
         });

@@ -2,6 +2,7 @@ package app.priceindex.chart;
 
 import app.priceindex.model.PriceIndex;
 import app.priceindex.model.PriceIndexDAO;
+import app.priceindex.search.SearchController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,10 +29,7 @@ import java.util.*;
 public class PriceIndexController implements Initializable {
 
     @FXML
-    private DatePicker fromField, toField;
-
-    @FXML
-    private Button searchButton;
+    private SearchController searchController;
 
     @FXML
     private LineChart<Date, Number> indexChart;
@@ -53,13 +51,8 @@ public class PriceIndexController implements Initializable {
         series.setName("Price Index");
         this.indexChart.getData().add(series);
 
-        searchButton.setOnAction((ActionEvent event) -> {
-            LocalDate from = fromField.getValue();
-            LocalDate to   = toField.getValue();
-
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            PriceIndexDAO dao = new PriceIndexDAO();
-            this.indexList = FXCollections.observableArrayList(dao.fetchAll(from.format(formatter), to.format(formatter)));
+        searchController.getSearchButton().setOnAction((ActionEvent event) -> {
+            this.indexList = searchController.search();
 
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             series.getData().clear();
