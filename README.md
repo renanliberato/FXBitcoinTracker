@@ -7,7 +7,7 @@ features and structures from Java FX and/or Java world.
 This repo is still under development and will be constantly updated as soon as I correct things
  / learn something new that can be included in this example.
 
-The API used to retrieve Bitcoin indix price information
+The API used to retrieve Bitcoin index price history
  is [Powered by CoinDesk](http://www.coindesk.com/price/). 
 
 ## Dependencies
