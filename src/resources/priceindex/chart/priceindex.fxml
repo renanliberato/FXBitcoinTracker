@@ -8,6 +8,11 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import app.priceindex.chart.DateAxis?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.priceindex.chart.PriceIndexController">
     <top>
         <fx:include source="../../topmenu/topmenu.fxml" />
@@ -25,4 +30,29 @@
     <bottom>
         <fx:include source="../../footer/footer.fxml" />
     </bottom>
+    <left>
+        <VBox prefHeight="307.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox prefHeight="50.0" prefWidth="90.0">
+                    <children>
+                        <Label text="From:" />
+                        <DatePicker fx:id="fromField" />
+                    </children></VBox>
+                <VBox prefHeight="50.0" prefWidth="90.0">
+                    <children>
+                        <Label text="To:" />
+                        <DatePicker fx:id="toField" />
+                    </children></VBox>
+                <VBox alignment="TOP_RIGHT" prefHeight="24.0" prefWidth="90.0">
+                    <children>
+                        <Button fx:id="searchButton" mnemonicParsing="false" text="Search" />
+                    </children></VBox>
+            </children>
+            <padding>
+                <Insets left="5.0" right="5.0" top="25.0" />
+            </padding>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin></VBox>
+    </left>
 </BorderPane>

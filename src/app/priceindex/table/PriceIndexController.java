@@ -5,13 +5,19 @@ import app.priceindex.model.PriceIndex;
 import app.priceindex.model.PriceIndexDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -24,6 +30,12 @@ public class PriceIndexController implements Initializable {
     private TableView indexTable;
 
     @FXML
+    private DatePicker fromField, toField;
+
+    @FXML
+    private Button searchButton;
+
+    @FXML
     private TableColumn dateColumn, indexColumn;
 
     private ObservableList<PriceIndex> indexList;
@@ -31,14 +43,18 @@ public class PriceIndexController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        PriceIndexDAO dao = new PriceIndexDAO();
-
-        this.indexList = FXCollections.observableArrayList(dao.fetchAll("2016-01-01", "2016-03-14"));
-
-        indexTable.setItems(indexList);
-
         dateColumn.setCellValueFactory(new PropertyValueFactory<PriceIndex, String>("date"));
         indexColumn.setCellValueFactory(new PropertyValueFactory<PriceIndex, Double>("index"));
 
+        searchButton.setOnAction((ActionEvent event) -> {
+            LocalDate from = fromField.getValue();
+            LocalDate to   = toField.getValue();
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            PriceIndexDAO dao = new PriceIndexDAO();
+            this.indexList = FXCollections.observableArrayList(dao.fetchAll(from.format(formatter), to.format(formatter)));
+
+            indexTable.setItems(indexList);
+        });
     }
 }
