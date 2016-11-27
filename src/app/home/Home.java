@@ -23,6 +23,7 @@ public class Home extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../../resources/home/home.fxml"));
         Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
