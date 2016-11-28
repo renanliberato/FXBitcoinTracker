@@ -17,5 +17,5 @@ The API used to retrieve Bitcoin index price history
 
 ## Third Party
 
-  - app.priceindex.chart.DateAxis
+  - com.renanliberato.priceindex.chart.DateAxis
     - Class retrieved from [co0ter/extfx](https://bitbucket.org/sco0ter/extfx), thank you very much!
