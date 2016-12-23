@@ -2,7 +2,9 @@ package com.renanliberato.priceindex.table;
 
 import com.renanliberato.priceindex.model.PriceIndex;
 import com.renanliberato.priceindex.search.SearchController;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,9 +38,19 @@ public class PriceIndexController implements Initializable {
         indexColumn.setCellValueFactory(new PropertyValueFactory<PriceIndex, Double>("index"));
 
         searchController.getSearchButton().setOnAction((ActionEvent event) -> {
-            this.indexList = searchController.search();
+            Task searchTask = new Task() {
+                @Override
+                protected Object call() throws Exception {
+                    indexList = searchController.search();
+                    Platform.runLater(() -> {
+                        indexTable.setItems(indexList);
+                    });
+                    return null;
+                }
+            };
 
-            indexTable.setItems(indexList);
+            Thread searchThread = new Thread(searchTask, "Table Searcher");
+            searchThread.start();
         });
     }
 }

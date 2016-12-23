@@ -2,7 +2,10 @@ package com.renanliberato.priceindex.chart;
 
 import com.renanliberato.priceindex.model.PriceIndex;
 import com.renanliberato.priceindex.search.SearchController;
+import com.sun.javafx.tk.Toolkit;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,38 +38,53 @@ public class PriceIndexController implements Initializable {
     private NumberAxis yAxis;
 
     private ObservableList<PriceIndex> indexList;
+    private XYChart.Series<Date, Number> series;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         this.indexChart.setTitle("Price Index 2016");
 
-        XYChart.Series<Date, Number> series = new XYChart.Series();
+        series = new XYChart.Series();
         series.setName("Price Index");
         this.indexChart.getData().add(series);
 
         searchController.getSearchButton().setOnAction((ActionEvent event) -> {
-            this.indexList = searchController.search();
+            Task searchTask = new Task() {
 
-            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            series.getData().clear();
-            for (PriceIndex index : this.indexList) {
-                try {
-                    series.getData().add(new XYChart.Data(df.parse(index.getDate()), index.getIndex()));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
+                @Override
+                protected Object call() throws Exception {
+                    indexList = searchController.search();
 
-            SimpleDateFormat dfToView = new SimpleDateFormat("dd/MM/yyyy");
-            for (XYChart.Series<Date, Number> finalSeries : indexChart.getData()) {
-                for (XYChart.Data<Date, Number> data : finalSeries.getData()) {
-                    Tooltip tooltip = new Tooltip(
-                            data.getYValue() + "\n" + dfToView.format(data.getXValue())
-                    );
-                    Tooltip.install(data.getNode(),tooltip);
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    Platform.runLater(() -> {
+                        series.getData().clear();
+                        for (PriceIndex index : indexList) {
+                            try {
+                                series.getData().add(new XYChart.Data(df.parse(index.getDate()), index.getIndex()));
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        SimpleDateFormat dfToView = new SimpleDateFormat("dd/MM/yyyy");
+                        for (XYChart.Series<Date, Number> finalSeries : indexChart.getData()) {
+                            for (XYChart.Data<Date, Number> data : finalSeries.getData()) {
+                                Tooltip tooltip = new Tooltip(
+                                        data.getYValue() + "\n" + dfToView.format(data.getXValue())
+                                );
+                                Tooltip.install(data.getNode(),tooltip);
+                            }
+                        }
+                    });
+
+                    return null;
                 }
-            }
+            };
+
+            Thread searchThread = new Thread(searchTask, "Chart Searcher");
+            searchThread.start();
+
         });
     }
 }
