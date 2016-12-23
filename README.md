@@ -10,6 +10,13 @@ This repo is still under development and will be constantly updated as soon as I
 The API used to retrieve Bitcoin index price history
  is [Powered by CoinDesk](http://www.coindesk.com/price/). 
 
+
+## Features
+
+  - Home Button component - __com.renanliberato.home.HomeVBox__
+  ![home_button](https://cloud.githubusercontent.com/assets/15313802/21460163/809b8b2a-c92c-11e6-9008-60ec9759ca51.gif)
+
+
 ## Dependencies
   - com.squareup.retrofit2:retrofit:2.1.0
   - com.squareup.retrofit2:converter-gson:2.1.0
