@@ -37,4 +37,4 @@ The API used to retrieve Bitcoin index price history
   - com.renanliberato.priceindex.chart.DateAxis
     - Class retrieved from [co0ter/extfx](https://bitbucket.org/sco0ter/extfx), thank you very much!
     
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/y6hACxPSBJQ6Jk6pXSFbk4D8/renanliberato/FXBitcoinTracker'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/y6hACxPSBJQ6Jk6pXSFbk4D8/renanliberato/FXBitcoinTracker.svg' /></a>
+
